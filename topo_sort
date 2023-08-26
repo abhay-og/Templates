@@ -1,0 +1,19 @@
+vector<ll> topo_sort(vector<ll>&in_deg){
+    vector<ll> ans;
+    ll cnt=0;
+    queue<ll>q;
+    for(int i=1;i<=n;i++){
+        if(in_deg[i]==0)q.push(i);
+    }
+    while(q.size()){
+        ll v=q.front();
+        q.pop();
+        ans.push_back(v);
+        cnt++;
+        for(auto &z:graph[v]){
+            if(--in_deg[z]==0)q.push(z);
+        }
+    }
+    return ans;
+    // if cnt!=n cycle exists
+}
