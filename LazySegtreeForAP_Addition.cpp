@@ -7,9 +7,6 @@ struct segtree{
         a=d=t;
         build(0,0,sz-1,v);
     }
-    ll f(ll v){
-        return (v*(v+1))/2;
-    }
     void build(ll node_pos,ll lx,ll rx,vector<ll>&v){
         if(rx==lx){
             t[node_pos]=v[lx];
@@ -40,7 +37,7 @@ struct segtree{
         if(lx>=l && rx<=r){
             a[node_pos]=A;
             d[node_pos]=D;
-            t[node_pos]+=(rx-lx+1)*A+D*f(rx-lx);
+            t[node_pos]+=(rx-lx+1)*A+D*(((rx-lx)*(rx-lx+1))/2);
             return;
         }
         ll mid=(lx+rx)/2;
